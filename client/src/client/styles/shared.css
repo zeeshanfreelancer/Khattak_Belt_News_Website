@@ -1,0 +1,130 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+/* Modern Toast Styles */
+.Toastify__toast-container {
+  width: auto;
+  max-width: 400px;
+  padding: 0 15px;
+}
+
+.Toastify__toast {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  border-radius: 12px;
+  padding: 16px 20px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  margin-bottom: 1rem;
+  min-height: 60px;
+  position: relative;
+  overflow: hidden;
+  border-left: 6px solid;
+  background: white;
+  color: #2c3e50;
+}
+
+.Toastify__toast--success {
+  border-left-color: #2ecc71;
+}
+
+.Toastify__toast--error {
+  border-left-color: #e74c3c;
+}
+
+.Toastify__toast--info {
+  border-left-color: #3498db;
+}
+
+.Toastify__toast--warning {
+  border-left-color: #f39c12;
+}
+
+.Toastify__toast-body {
+  font-size: 15px;
+  font-weight: 500;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.Toastify__toast-icon {
+  width: 24px;
+  height: 24px;
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.Toastify__progress-bar {
+  height: 3px;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.Toastify__close-button {
+  color: #7f8c8d;
+  opacity: 1;
+  align-self: center;
+  transition: all 0.3s ease;
+}
+
+.Toastify__close-button:hover {
+  color: #34495e;
+  transform: scale(1.1);
+}
+
+/* Animation for toast */
+.Toastify__slide-enter {
+  animation: toastSlideIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.Toastify__slide-exit {
+  animation: toastSlideOut 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards;
+}
+
+@keyframes toastSlideIn {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes toastSlideOut {
+  from { transform: translateY(0); opacity: 1; }
+  to { transform: translateY(20px); opacity: 0; }
+}
+
+@keyframes slideAnimation {
+  0% {
+      opacity: 0;
+      transform: translateY(100px);
+  }
+  100% {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+.scroll-scale{
+  opacity: 0;
+  transform: scale(.9);
+  transition: all 2s;
+}
+
+.scroll-bottom{
+  opacity: 0;
+  transform: translateY(150px);
+  transition: 1.5s;
+}
+
+.scroll-top{
+  opacity: 0;
+  transform: translateY(-300px);
+  transition: 3s;
+}
+
+.show-items{
+  opacity: 1;
+  transform: translateX(0);
+}
