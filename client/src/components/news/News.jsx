@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import API from '../../../services/api'; // Ensure this path is correct
-import { useUser } from '../UserContext'; // Ensure this path is correct
-import '../../styles/news.css'; // Ensure this path is correct
+import API from '../../services/api'; 
+import { useUser } from '../UserContext'; 
+import '../../styles/news.css'; 
 
 export default function News() {
   const [newsArticles, setNewsArticles] = useState([]);
@@ -14,13 +14,16 @@ export default function News() {
 
   const categories = ['all', 'politics', 'business', 'health', 'technology', 'entertainment', 'science', 'history'];
 
-  useEffect(() => {
+  useEffect(() => {   
     if (location.hash) {
       const categoryFromHash = location.hash.substring(1);
       if (categories.includes(categoryFromHash)) {
         setFilter(categoryFromHash);
+      
       }
     }
+  
+  
   }, [location.hash, categories]);
 
   useEffect(() => {
