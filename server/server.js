@@ -38,7 +38,8 @@ const connectDB = async () => {
 const allowedOrigins = [
   'https://khattakbelt.site',
   'https://khattakbeltbackend.onrender.com',
-  'http://localhost:5173'
+  'http://localhost:5173',
+  'https://khattak-belt-news-website.vercel.app/'
 ];
 
 app.use(cors({
