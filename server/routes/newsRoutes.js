@@ -1,14 +1,15 @@
+// routes/newsRoutes.js
 import express from 'express';
+import multer from 'multer';
 import {
   getNews,
   getNewsById,
   createNews,
   updateNews,
-  deleteNews
+  deleteNews,
 } from '../controllers/newsController.js';
-
 import { protect } from '../middleware/auth.js';
-import multer from 'multer';
+import fetch from 'node-fetch';
 
 const router = express.Router();
 
@@ -22,11 +23,39 @@ const upload = multer({
     } else {
       cb(new Error('Only JPEG and PNG images are allowed'), false);
     }
+  },
+});
+
+// @route   GET /news/external
+// @desc    Fetch live news from NewsAPI.org
+// @access  Public
+router.get('/external', async (req, res) => {
+  try {
+    const apiKey = process.env.NEWS_API_KEY;
+    if (!apiKey) {
+      return res.status(500).json({ message: 'API key missing in environment' });
+    }
+
+    const { country = 'us', category } = req.query;
+    const categoryParam = category ? `&category=${category}` : '';
+
+    const apiUrl = `https://newsapi.org/v2/top-headlines?country=${country}${categoryParam}&apiKey=${apiKey}`;
+
+    const response = await fetch(apiUrl);
+    if (!response.ok) {
+      throw new Error(`News API error: ${response.status}`);
+    }
+
+    const data = await response.json();
+    res.json(data);
+  } catch (error) {
+    console.error('Error fetching external news:', error.message);
+    res.status(500).json({ message: error.message || 'Failed to fetch external news' });
   }
 });
 
 // @route   GET /news
-// @desc    Get all news
+// @desc    Get all news from DB
 // @access  Public
 router.get('/', getNews);
 

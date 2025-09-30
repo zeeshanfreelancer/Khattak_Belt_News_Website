@@ -3,8 +3,7 @@ import { useUser } from './UserContext';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
-import { FaUser, FaEdit, FaSave, FaSignOutAlt, FaTrash, FaEye, FaEyeSlash, FaLock, FaGlobe } from 'react-icons/fa';
-// import API from '../../services/api';
+import { FaEdit, FaSave, FaSignOutAlt, FaLock, FaGlobe } from 'react-icons/fa';
 import '../styles/profile.css';
 
 export default function Profile() {

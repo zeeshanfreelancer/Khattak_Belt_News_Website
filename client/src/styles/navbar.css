@@ -28,7 +28,7 @@
   height: 100%;
   width: 100%;
   max-width: 1500px;
-  padding: 0 20px;
+  /* padding: 0 20px; */
   position: relative;
 }
 
@@ -69,7 +69,7 @@
   text-align: center;
   margin: 0;
   padding: 0;
-  width: 75%;
+  /* width: 75%; */
   justify-content: center;
   gap: 5px;
 }
@@ -264,6 +264,12 @@
   color: #4a6bff;
   background-color: rgba(74, 107, 255, 0.1);
   transform: scale(1.1);
+}
+
+@media screen and (max-width:1290px){
+  .navbar-logo h1 {
+    font-size: 2rem;
+  }
 }
 
 /* Mobile menu styles (1160px and below) */

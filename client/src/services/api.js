@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 
 // Axios instance
 const API = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || 'http://localhost:5000', // Make sure this is the correct port
+  baseURL: import.meta.env.VITE_API_URL || 'http://localhost:5000',
   withCredentials: true // ✅ Important: send cookies (for session or token-based auth)
 });
 

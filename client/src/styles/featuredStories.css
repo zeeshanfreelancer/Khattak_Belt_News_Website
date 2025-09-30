@@ -1,0 +1,326 @@
+/* styles/featuredStories.css */
+
+.featured-slider {
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.featured-slider::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #667eea, #764ba2, #667eea);
+  background-size: 200% 100%;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+.featured-slider h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 3rem;
+  color: #1e293b;
+  position: relative;
+  display: inline-block;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.featured-slider h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 25%;
+  width: 50%;
+  height: 3px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  border-radius: 2px;
+}
+
+/* Slick slider overrides */
+.featured-slider .slick-list {
+  padding: 20px 0;
+  margin: 0 -10px;
+}
+
+.featured-slider .slick-track {
+  display: flex !important;
+  align-items: stretch;
+}
+
+.featured-slider .slick-slide {
+  height: auto;
+  padding: 0 10px;
+}
+
+.featured-slider .slick-slide > div {
+  height: 100%;
+}
+
+/* Featured slide card */
+.featured-slide {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  height: 100%;
+  display: flex !important;
+  flex-direction: column;
+  position: relative;
+  border: 1px solid #f1f5f9;
+}
+
+.featured-slide::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  z-index: 2;
+}
+
+.featured-slide:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.featured-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.featured-slide:hover .featured-image {
+  transform: scale(1.05);
+}
+
+.featured-content {
+  padding: 1.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  background: white;
+}
+
+.featured-content h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1.4;
+  margin-bottom: 0.75rem;
+  color: #1e293b;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.featured-content p {
+  color: #64748b;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  flex-grow: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: 0.9rem;
+}
+
+.featured-content a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  align-self: flex-start;
+  margin-top: auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.featured-content a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.featured-content a:hover::before {
+  left: 100%;
+}
+
+.featured-content a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+}
+
+/* Loading and error states */
+.featured-slider p:not(.featured-content p) {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #64748b;
+  padding: 2rem;
+}
+
+.featured-slider .error {
+  color: #dc2626;
+  background: #fef2f2;
+  padding: 1rem;
+  border-radius: 8px;
+  border-left: 4px solid #dc2626;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .featured-slider {
+    padding: 3rem 1.5rem;
+  }
+  
+  .featured-slider h2 {
+    font-size: 2.25rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .featured-slider {
+    padding: 2rem 1rem;
+  }
+  
+  .featured-slider h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .featured-slider .slick-slide {
+    padding: 0 8px;
+  }
+  
+  .featured-image {
+    height: 180px;
+  }
+  
+  .featured-content {
+    padding: 1.25rem;
+  }
+  
+  .featured-content h3 {
+    font-size: 1rem;
+    -webkit-line-clamp: 2;
+  }
+  
+  .featured-content p {
+    -webkit-line-clamp: 2;
+    font-size: 0.85rem;
+  }
+  
+  .featured-content a {
+    padding: 0.625rem 1.25rem;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .featured-slider {
+    padding: 1.5rem 0.5rem;
+  }
+  
+  .featured-slider h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .featured-slider .slick-slide {
+    padding: 0 6px;
+  }
+  
+  .featured-image {
+    height: 160px;
+  }
+  
+  .featured-content {
+    padding: 1rem;
+  }
+  
+  .featured-content h3 {
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .featured-content p {
+    font-size: 0.8rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .featured-content a {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Animation for the shimmer effect */
+@keyframes shimmer {
+  0%, 100% {
+    background-position: -200% 0;
+  }
+  50% {
+    background-position: 200% 0;
+  }
+}
+
+/* Custom scrollbar for webkit browsers */
+.featured-slider .slick-list::-webkit-scrollbar {
+  display: none;
+}
+
+/* Ensure images don't break layout */
+.featured-image:not([src]),
+.featured-image[src=""],
+.featured-image[src*="null"] {
+  background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.featured-image:not([src])::after,
+.featured-image[src=""]::after,
+.featured-image[src*="null"]::after {
+  content: '📰 No Image';
+  color: #64748b;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+/* Focus styles for accessibility */
+.featured-content a:focus {
+  outline: 2px solid #667eea;
+  outline-offset: 2px;
+}
+
+.featured-slide:focus-within {
+  outline: 2px solid #667eea;
+  outline-offset: 4px;
+}

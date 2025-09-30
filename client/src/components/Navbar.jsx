@@ -162,18 +162,18 @@ export default function Navbar() {
       {showNewsForm && (
         <div className={`news-form-modal ${showNewsForm ? 'active' : ''}`}>
           <div className="modal-content">
-            <button 
-              className="close-modal" 
+            <button
+              className="close-modal"
               onClick={() => setShowNewsForm(false)}
               disabled={isLoading}
             >
               &times;
             </button>
-            <NewsForm 
+            <NewsForm
               onSuccess={() => {
                 setShowNewsForm(false);
                 setIsMobile(false);
-              }} 
+              }}
             />
           </div>
         </div>

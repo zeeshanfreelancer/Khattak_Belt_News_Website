@@ -1,5 +1,5 @@
 // src/server/validators/authValidators.js
-import { body, validationResult } from 'express-validator';
+import { body } from 'express-validator';
 
 export const registerValidator = [
   body('username')
