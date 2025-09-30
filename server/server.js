@@ -84,7 +84,7 @@ app.use((err, req, res, next) => {
 });
 
 // Server Init
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 10000;
 
 connectDB().then(() => {
   const server = app.listen(PORT, () => {
