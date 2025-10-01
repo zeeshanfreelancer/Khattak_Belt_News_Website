@@ -40,7 +40,7 @@ export const UserProvider = ({ children }) => {
   // User login function
   const login = async (email, password) => {
   try {
-    const { data } = await API.post('/auth/login', { email, password }, { withCredentials: true });
+    const { data } = await API.post('/auth/login', { email, password });
     
     localStorage.setItem('token', data.token);
     setUser(data.user);
@@ -79,7 +79,6 @@ export const UserProvider = ({ children }) => {
   const register = async (userData) => {
   try {
     const { data } = await API.post('/auth/register', userData, { 
-      withCredentials: true 
     });
     
     localStorage.setItem('token', data.token);
@@ -88,7 +87,6 @@ export const UserProvider = ({ children }) => {
     return { 
       success: true, 
       user: data.user 
-      // Removed toast.success() from here
     };
   } catch (err) {
     console.error('Registration error:', err);
@@ -119,7 +117,6 @@ export const UserProvider = ({ children }) => {
     setUser(null);
     setProfilePic('');
     toast.success('Logged out successfully!');
-    // Remove the navigate call here
   };
 
 // Update user profile function
@@ -141,7 +138,7 @@ export const UserProvider = ({ children }) => {
     const { data } = await API.put('/users/profile', profileData, config);
     
     setUser(data.user);
-    toast.success('Profile updated successfully!'); // Only show toast here
+    toast.success('Profile updated successfully!');
     return { success: true, user: data.user };
   } catch (err) {
     console.error('Update profile error:', err);
@@ -185,24 +182,6 @@ export const UserProvider = ({ children }) => {
     }
   };
 
-  // Refresh user data function
-  const refreshUser = async () => {
-    try {
-      const token = localStorage.getItem('token');
-      if (!token) return;
-
-      const { data } = await API.get('/auth/me', {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      });
-      setUser(data.user);
-      setProfilePic(data.user.profilePic || '');
-    } catch (err) {
-      console.error('Refresh user error:', err);
-    }
-  };
-
   return (
     <UserContext.Provider
       value={{
@@ -211,7 +190,7 @@ export const UserProvider = ({ children }) => {
         loading,
         login,
         register,
-        logout,  // This stays the same
+        logout, 
         updateProfile,
         updateProfilePic
       }}
